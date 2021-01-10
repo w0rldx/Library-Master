@@ -1,4 +1,6 @@
-﻿namespace Library_Master.Desktop.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Library_Master.Desktop.Entities
 {
     public class QrCode
     {

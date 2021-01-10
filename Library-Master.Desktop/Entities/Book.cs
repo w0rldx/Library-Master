@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using Library_Master.Desktop.Enums;
 
@@ -48,12 +49,7 @@ namespace Library_Master.Desktop.Entities
         public virtual QrCode QrCode { get; set; }
         public DateTime ZuletztEntliehen { get; set; }
         public string ZuletztEntliehenVon { get; set; }
-
-        public Book()
-        {
-            QrCode = new QrCode(Titel, AutorKuerzel, Isbn, Besonderheit);
-        }
-
+        
         public virtual TypeOfMedium SelectMedium(string medium)
         {
             switch (medium)
@@ -111,6 +107,11 @@ namespace Library_Master.Desktop.Entities
             return $"{Titel}, {Autor}, {AutorKuerzel}, {Isbn}, {Besonderheit}";
         }
 
+        public void GenerateQrCode()
+        {
+            QrCode = new QrCode(Titel, AutorKuerzel, Isbn, Besonderheit);
+        }
+
         private bool SetAntolinStatus(string antolin)
         {
             if (antolin == "Antolin Buch" || antolin == "ja" || antolin == "Ja")
@@ -124,7 +125,7 @@ namespace Library_Master.Desktop.Entities
                 $"{Medium};{Klasse};{Fach};{Kategorie};{Nummer};{Sparte};{AutorKuerzel};" +
                 $"{Autor};{Titel};{Verlag};{Preis};{ErscheinungsJahr};{Antolin};" +
                 $"{Bezugsquelle};{Isbn};{Informationen};{Besonderheit};{HinzufuegeDatum};" +
-                $"{QrCode};{Entliehen};{ZuletztEntliehen};{ZuletztEntliehenVon}";
+                $"{QrCode.QrCodeString};{Entliehen};{ZuletztEntliehen};{ZuletztEntliehenVon}";
         }
     }
 }

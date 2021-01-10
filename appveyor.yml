@@ -6,8 +6,11 @@ dotnet_csproj:
   file: 'Library-Master.Desktop\Library-Master.Desktop.csproj'
   version: '0.0.{build}'
 before_build:
-  - ps: dotnet --info 
+  - ps: dotnet --info
   - ps: nuget restore -verbosity quiet
+  - ps: Remove-Item ".\Library-Master.Desktop\data.db"
+  - ps: dotnet tool restore
+  - ps: dotnet ef database update --project Library-Master.Desktop
 build:
   project: Library-Master.sln
   parallel: true

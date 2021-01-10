@@ -4,9 +4,79 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library_Master.Desktop"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Menu>
+            <!-- Main Settings -->
+            <MenuItem Header="_File">
+                <MenuItem Header="_Neues Buch" Name="MenuBuchItemNew" Click="MenuBuchItemNew_OnClick" />
+                <MenuItem Header="_Neuer Schüler" Name="MenuSchuelerItemNew" Click="MenuSchuelerItemNew_OnClick" />
+                <Separator />
+                <MenuItem Header="_Import" Name="MenuItemImport">
+                    <MenuItem Header="_Import csv" Click="Import_Csv_OnClick" />
+                    <MenuItem Header="_Import json" Click="Import_Json_OnClick" />
+                </MenuItem>
+                <MenuItem Header="_Export" Name="MenuItemExport">
+                    <MenuItem Header="_Export csv" Click="Export_To_Csv_OnClick" />
+                    <MenuItem Header="_Export json" Click="Export_To_Json_OnClick" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="_Einstellungen" Name="MenuItemSettings" Click="Settings_OnClick" />
+            </MenuItem>
 
+            <!-- View SETTINGS -->
+            <MenuItem Header="_View">
+                <MenuItem Header="_Bücher Data Grid" Name="MenuItemBookDataView" Click="MenuItemBookDataView_Click" />
+                <MenuItem Header="_Schüler Data Grid" Name="MenuItemSchuelerDataView"
+                          Click="MenuItemSchuelerDataView_Click" />
+                <MenuItem Header="_Main Menu View" Name="MenuItemMainMenu" Click="MenuItemMainMenu_OnClick" />
+            </MenuItem>
+
+            <!-- About SETTINGS -->
+            <MenuItem Header="_Help">
+                <MenuItem Header="_Help" />
+                <MenuItem Header="_Start First Starting Setup" />
+                <Separator />
+                <MenuItem Header="_Collect Logs" />
+                <MenuItem Header="_Report a Bug" />
+                <Separator />
+                <MenuItem Header="_Licenses" />
+                <MenuItem Header="_Check for Updates..." />
+                <MenuItem Header="_About" />
+            </MenuItem>
+
+            <!-- DEV SETTINGS -->
+            <MenuItem Header="_Dev">
+                <MenuItem Header="_Show Login Screen" Name="LoginscreenShowButton"
+                          Click="LoginscreenShowButton_OnClick" />
+                <MenuItem Header="_Debug Console" Name="DebugConsoleShowButton" />
+                <MenuItem Header="_Test Notification" Name="NotificationButton" Click="NotificationButton_OnClick" />
+            </MenuItem>
+        </Menu>
+        
+        <!-- Main View -->
+        <Frame Grid.Row="1" Name="PageContainer" NavigationUIVisibility="Hidden" Margin="0,0,0,0" />
+        <Grid Grid.Row="2" Background="{DynamicResource MahApps.Brushes.AccentBase}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Foreground="White" Text="Status:" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="40,0,0,0" Width="5" HorizontalAlignment="Left">
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            </StackPanel>
+            <TextBlock Grid.Column="1" Name="StatusTextBlock" IsEnabled="True" Width="100" Margin="50,0,0,0"
+                       HorizontalAlignment="Left" Foreground="White" Text="Ready" />
+            <ProgressBar Grid.Column="1" Name="StatusProgressbar" Visibility="Hidden" Width="100" Margin="50,2,2,2"
+                         HorizontalAlignment="Left" Foreground="Green" />
+        </Grid>
     </Grid>
 </Window>

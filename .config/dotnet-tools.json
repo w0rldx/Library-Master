@@ -2,10 +2,10 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "cake.tool": {
-      "version": "1.0.0-rc0002",
+    "dotnet-ef": {
+      "version": "5.0.1",
       "commands": [
-        "dotnet-cake"
+        "dotnet-ef"
       ]
     }
   }
