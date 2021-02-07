@@ -1,6 +1,9 @@
 # Library Master
 
 [![Build status](https://ci.appveyor.com/api/projects/status/p61onel4qsibhrod?svg=true)](https://ci.appveyor.com/project/w0rldx/library-master)
+[![CodeFactor](https://www.codefactor.io/repository/github/w0rldx/library-master/badge)](https://www.codefactor.io/repository/github/w0rldx/library-master)
+
+
 
 
 ## Status
