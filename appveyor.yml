@@ -8,9 +8,8 @@ dotnet_csproj:
 before_build:
   - ps: dotnet --info
   - ps: nuget restore -verbosity quiet
-  - ps: Remove-Item ".\Library-Master.Desktop\data.db"
   - ps: dotnet tool restore
-  - ps: dotnet ef database update --project Library-Master.Desktop
+  - ps: dotnet ef database update --project Library-Master.EntityFramework\
 build:
   project: Library-Master.sln
   parallel: true
