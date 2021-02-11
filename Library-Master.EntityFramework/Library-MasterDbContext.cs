@@ -15,6 +15,9 @@ namespace Library_Master.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Book>().Ignore(b => b.StrAntolin);
+            modelBuilder.Entity<Book>().Ignore(b => b.StrPreis);
+            modelBuilder.Entity<Book>().Ignore(b => b.StrMedium);
             base.OnModelCreating(modelBuilder);
         }
     }

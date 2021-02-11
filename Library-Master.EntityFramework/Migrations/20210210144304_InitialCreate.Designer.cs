@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library_Master.EntityFramework.Migrations
 {
     [DbContext(typeof(Library_MasterDbContext))]
-    [Migration("20210209022141_InitialCreate")]
+    [Migration("20210210144304_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,8 +79,8 @@ namespace Library_Master.EntityFramework.Migrations
                     b.Property<string>("Klasse")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Medium")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Medium")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nummer")
                         .HasColumnType("TEXT");
@@ -92,12 +92,6 @@ namespace Library_Master.EntityFramework.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Sparte")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrAntolin")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("StrPreis")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titel")

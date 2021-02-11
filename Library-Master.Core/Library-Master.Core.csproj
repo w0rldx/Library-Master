@@ -5,4 +5,9 @@
         <RootNamespace>Library_Master.Core</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Library-Master.Domain\Library-Master.Domain.csproj" />
+      <ProjectReference Include="..\Library-Master.EntityFramework\Library-Master.EntityFramework.csproj" />
+    </ItemGroup>
+
 </Project>

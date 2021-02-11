@@ -63,7 +63,7 @@ namespace Library_Master.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Medium = table.Column<string>(type: "TEXT", nullable: true),
+                    Medium = table.Column<int>(type: "INTEGER", nullable: false),
                     Titel = table.Column<string>(type: "TEXT", nullable: true),
                     Fach = table.Column<string>(type: "TEXT", nullable: true),
                     Verlag = table.Column<string>(type: "TEXT", nullable: true),
@@ -74,12 +74,10 @@ namespace Library_Master.EntityFramework.Migrations
                     Klasse = table.Column<string>(type: "TEXT", nullable: true),
                     Kategorie = table.Column<string>(type: "TEXT", nullable: true),
                     Preis = table.Column<double>(type: "REAL", nullable: false),
-                    StrPreis = table.Column<string>(type: "TEXT", nullable: true),
                     Informationen = table.Column<string>(type: "TEXT", nullable: true),
                     Nummer = table.Column<string>(type: "TEXT", nullable: true),
                     AutorKuerzel = table.Column<string>(type: "TEXT", nullable: true),
                     Autor = table.Column<string>(type: "TEXT", nullable: true),
-                    StrAntolin = table.Column<string>(type: "TEXT", nullable: true),
                     Antolin = table.Column<bool>(type: "INTEGER", nullable: false),
                     Bezugsquelle = table.Column<string>(type: "TEXT", nullable: true),
                     Isbn = table.Column<string>(type: "TEXT", nullable: true),

@@ -3,8 +3,8 @@
     public enum TypeOfMedium
     {
         Buch,
-        Cd,
-        Dvd,
+        CD,
+        DVD,
         Hoerbuch,
         Spiel,
         Video,

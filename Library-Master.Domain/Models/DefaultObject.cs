@@ -1,7 +1,9 @@
-﻿namespace Library_Master.Core.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Library_Master.Core.Models
 {
     public class DefaultObject
     {
-        public int Id { get; set; }
+        [JsonIgnore] public int Id { get; set; }
     }
 }
