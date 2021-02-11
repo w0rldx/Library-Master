@@ -1,0 +1,27 @@
+﻿<Window x:Class="Library_Master.Desktop.UI.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Title="TestWindow" Height="450" Width="800"
+        Loaded="TestWindow_OnLoaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="bookViewSource" />
+    </Window.Resources>
+
+    <Grid>
+        <DataGrid x:Name="bookDataGrid" AutoGenerateColumns="False"
+                  EnableRowVirtualization="True"
+                  ItemsSource="{Binding Source={StaticResource bookViewSource}}"
+                  Margin="13,13,43,229" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Titel}"
+                                    Header="Titel" Width="SizeToHeader"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Verlag}" Header="Verlag"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

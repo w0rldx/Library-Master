@@ -3,11 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Library_Master.Desktop"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -61,7 +59,7 @@
                 <MenuItem Header="_Test Notification" Name="NotificationButton" Click="NotificationButton_OnClick" />
             </MenuItem>
         </Menu>
-        
+
         <!-- Main View -->
         <Frame Grid.Row="1" Name="PageContainer" NavigationUIVisibility="Hidden" Margin="0,0,0,0" />
         <Grid Grid.Row="2" Background="{DynamicResource MahApps.Brushes.AccentBase}">
