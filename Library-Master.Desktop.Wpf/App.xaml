@@ -1,0 +1,26 @@
+﻿<Application x:Class="Library_Master.Desktop.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Library_Master.Desktop.Wpf"
+             xmlns:views="clr-namespace:Library_Master.Desktop.Wpf.Views"
+             xmlns:viewmodels="clr-namespace:Library_Master.Desktop.Wpf.ViewModels">
+    <Application.Resources>
+
+        <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+            <views:HomeView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:BookViewModel}">
+            <views:BookView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:StudentViewModel}">
+            <views:StudentView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:TransactionViewModel}">
+            <views:TransactionView/>
+        </DataTemplate>
+
+    </Application.Resources>
+</Application>
