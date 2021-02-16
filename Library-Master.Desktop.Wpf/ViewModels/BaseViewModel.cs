@@ -1,6 +1,8 @@
-﻿namespace Library_Master.Desktop.Wpf.ViewModels
+﻿using Library_Master.Desktop.Wpf.Models;
+
+namespace Library_Master.Desktop.Wpf.ViewModels
 {
-    public class BaseViewModel
+    public class BaseViewModel : ObservableObject
     {
         
     }

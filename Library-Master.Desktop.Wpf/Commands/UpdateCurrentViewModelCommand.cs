@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using Library_Master.Core.Services;
 using Library_Master.Desktop.Wpf.State.Navigators;
 using Library_Master.Desktop.Wpf.ViewModels;
 
@@ -28,7 +29,7 @@ namespace Library_Master.Desktop.Wpf.Commands
                 switch (viewType)
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel();
+                        _navigator.CurrentViewModel = new HomeViewModel(IndexCardListingViewModel.LoadIndexCardViewModel(new IndexCardService()));
                         break;
                     case ViewType.Book:
                         _navigator.CurrentViewModel = new BookViewModel();

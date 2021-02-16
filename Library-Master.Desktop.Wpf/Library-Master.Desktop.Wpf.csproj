@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Library_Master.Desktop.Wpf</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -11,6 +11,12 @@
     <Folder Include="Styles\" />
     <Folder Include="UI\Setup\" />
     <Folder Include="UI\Settings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library-Master.Core\Library-Master.Core.csproj" />
+    <ProjectReference Include="..\Library-Master.Domain\Library-Master.Domain.csproj" />
+    <ProjectReference Include="..\Library-Master.EntityFramework\Library-Master.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
