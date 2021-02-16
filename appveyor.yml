@@ -3,7 +3,7 @@ version: '{branch}-{build}'
 image: Visual Studio 2019
 dotnet_csproj:
   patch: true
-  file: 'Library-Master.Desktop\Library-Master.Desktop.csproj'
+  file: 'Library-Master.Desktop.Wpf\Library-Master.Desktop.Wpf.csproj'
   version: '0.0.{build}'
 before_build:
   - ps: dotnet --info
