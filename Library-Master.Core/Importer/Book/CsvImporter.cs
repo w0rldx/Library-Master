@@ -25,8 +25,11 @@ namespace Library_Master.Core.BookImporter
 
             if (File.Exists(filepath))
             {
-                var bookAsCsvArray = await File.ReadAllLinesAsync(filepath);
+                //TODO:FIX AWAIT
+                //var bookAsCsvArray = await File.ReadAllLinesAsync(filepath);
+                var bookAsCsvArray = File.ReadAllLines(filepath);
                 var i = 0;
+
                 foreach (var line in bookAsCsvArray)
                 {
                     try
