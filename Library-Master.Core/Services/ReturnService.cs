@@ -11,11 +11,13 @@ namespace Library_Master.Core.Services
     {
         private readonly IDataService<Account> _accountService;
         private readonly IDataService<Book> _bookService;
+        private readonly IDataService<Transaktion> _transactionService;
 
-        public ReturnService(IDataService<Account> accountService, IDataService<Book> bookService)
+        public ReturnService(IDataService<Account> accountService, IDataService<Book> bookService, IDataService<Transaktion> transactionService)
         {
             _accountService = accountService;
             _bookService = bookService;
+            _transactionService = transactionService;
         }
 
         public async Task<Account> ReturnBook(Account lender, Book book)
@@ -28,15 +30,12 @@ namespace Library_Master.Core.Services
                 {
                     if (borrowBook.Entliehen != false)
                     {
-                        var last = lenderAcc.Transaktionen.First();
-                        if (last != null)
-                        {
-                            lender.Transaktionen.Remove(last);
-                            last.AbgabeAm = DateTime.Now;
-                            lender.Transaktionen.Add(last);
-                        }
-
+                        //TODO:Check for last book if that is that last book
+                        var last = lenderAcc.Transaktionen.Last();
+                        lenderAcc.Transaktionen.Remove(last);
+                        last.AbgabeAm = DateTime.Now;
                         book.Entliehen = false;
+                        lenderAcc.Transaktionen.Add(last);
                     }
                     else
                     {
@@ -55,9 +54,9 @@ namespace Library_Master.Core.Services
             }
             
             await _bookService.Update(book.Id, book);
-            await _accountService.Update(lender.Id, lender);
+            await _accountService.Update(lender.Id, lenderAcc);
 
-            return lender;
+            return lenderAcc;
         }
     }
 }

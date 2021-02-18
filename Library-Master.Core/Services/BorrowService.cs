@@ -19,34 +19,41 @@ namespace Library_Master.Core.Services
 
         public async Task<Account> BorrowBook(Account lender, Book book)
         {
-            var borrowBook = await _bookService.Get(book.Id);
-            var lenderAcc = await _accountService.Get(lender.Id);
-
-            if (borrowBook != null || lenderAcc != null)
+            try
             {
-                if (borrowBook.Entliehen != true)
+                var borrowBook = await _bookService.Get(book.Id);
+                var lenderAcc = await _accountService.Get(lender.Id);
+
+                if (borrowBook != null || lenderAcc != null)
                 {
-                    lender.Transaktionen.Add(new Transaktion()
+                    if (borrowBook.Entliehen != true)
                     {
-                        EntliehenVon = lender,
-                        EntliehenAm = DateTime.Now,
-                        Book = book
-                    });
-                    book.Entliehen = true;
+                        lender.Transaktionen.Add(new Transaktion()
+                        {
+                            EntliehenAm = DateTime.Now,
+                            Book = book
+                        });
+                        book.Entliehen = true;
+                    }
+                    else
+                    {
+                        throw new AlreadyBorrowedException();
+                    }
                 }
                 else
                 {
-                    throw new AlreadyBorrowedException();
+                    throw new NullReferenceException();
                 }
+
+                await _bookService.Update(book.Id, book);
+                await _accountService.Update(lender.Id, lender);
             }
-            else
+            catch (Exception e)
             {
-                throw new NullReferenceException();
+                Console.WriteLine(e);
+                throw;
             }
-
-            await _bookService.Update(book.Id, book);
-            await _accountService.Update(lender.Id, lender);
-
+            
             return lender;
         }
     }

@@ -62,8 +62,8 @@ namespace Library_Master.Core.Models
         public string ErscheinungsJahr { get; set; }
         [JsonIgnore] public virtual QrCode QrCode { get; set; }
         [JsonIgnore] public DateTime ZuletztEntliehen { get; set; }
-        [JsonIgnore] public Account ZuletztEntliehenVon { get; set; }
-        [JsonIgnore] public IEnumerable<Transaktion> Transaktionen { get; set; }
+        [JsonIgnore] public virtual Account ZuletztEntliehenVon { get; set; }
+        [JsonIgnore] public virtual ICollection<Transaktion> Transaktionen { get; set; } = new List<Transaktion>();
 
         private TypeOfMedium SelectMedium(string medium)
         {

@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library_Master.EntityFramework.Migrations
 {
     [DbContext(typeof(Library_MasterDbContext))]
-    [Migration("20210210144304_InitialCreate")]
+    [Migration("20210218120628_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.3");
 
             modelBuilder.Entity("Library_Master.Core.Models.Account", b =>
                 {
@@ -150,20 +150,20 @@ namespace Library_Master.EntityFramework.Migrations
                     b.Property<DateTime>("AbgabeAm")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("AccountId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("BookId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("EntliehenAm")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("EntliehenVonId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("AccountId");
 
-                    b.HasIndex("EntliehenVonId");
+                    b.HasIndex("BookId");
 
                     b.ToTable("Transactions");
                 });
@@ -211,17 +211,15 @@ namespace Library_Master.EntityFramework.Migrations
 
             modelBuilder.Entity("Library_Master.Core.Models.Transaktion", b =>
                 {
+                    b.HasOne("Library_Master.Core.Models.Account", null)
+                        .WithMany("Transaktionen")
+                        .HasForeignKey("AccountId");
+
                     b.HasOne("Library_Master.Core.Models.Book", "Book")
                         .WithMany("Transaktionen")
                         .HasForeignKey("BookId");
 
-                    b.HasOne("Library_Master.Core.Models.Account", "EntliehenVon")
-                        .WithMany("Transaktionen")
-                        .HasForeignKey("EntliehenVonId");
-
                     b.Navigation("Book");
-
-                    b.Navigation("EntliehenVon");
                 });
 
             modelBuilder.Entity("Library_Master.Core.Models.Account", b =>

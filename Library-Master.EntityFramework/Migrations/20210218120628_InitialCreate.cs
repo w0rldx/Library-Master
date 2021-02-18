@@ -110,16 +110,16 @@ namespace Library_Master.EntityFramework.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     EntliehenAm = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EntliehenVonId = table.Column<int>(type: "INTEGER", nullable: true),
                     AbgabeAm = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    BookId = table.Column<int>(type: "INTEGER", nullable: true)
+                    BookId = table.Column<int>(type: "INTEGER", nullable: true),
+                    AccountId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transactions_Accounts_EntliehenVonId",
-                        column: x => x.EntliehenVonId,
+                        name: "FK_Transactions_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -147,14 +147,14 @@ namespace Library_Master.EntityFramework.Migrations
                 column: "ZuletztEntliehenVonId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Transactions_AccountId",
+                table: "Transactions",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Transactions_BookId",
                 table: "Transactions",
                 column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Transactions_EntliehenVonId",
-                table: "Transactions",
-                column: "EntliehenVonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

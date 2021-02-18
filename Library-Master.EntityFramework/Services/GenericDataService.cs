@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Library_Master.Core.Models;
 using Library_Master.Core.Services;
@@ -45,15 +46,25 @@ namespace Library_Master.EntityFramework.Services
             using (Library_MasterDbContext context = _contextFactory.CreateDbContext())
             {
                 T entity = await context.Set<T>().FirstOrDefaultAsync((e) => e.Id == id);
+                Type type = typeof(T);
+                if (type == typeof(Account))
+                {
+                    await context.Set<Account>().Include(c => c.Transaktionen).ToListAsync();
+                }
                 return entity;
             }
         }
         
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<ICollection<T>> GetAll()
         {
             using (Library_MasterDbContext context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<T> entities = await context.Set<T>().ToListAsync();
+                ICollection<T> entities = await context.Set<T>().ToListAsync();
+                Type type = typeof(T);
+                if (type == typeof(Account))
+                {
+                    await context.Set<Account>().Include(c => c.Transaktionen).ToListAsync();
+                }
                 return entities;
             }
         }

@@ -16,6 +16,7 @@ namespace Library_Master.EntityFramework
             }
             
             var options = new DbContextOptionsBuilder<Library_MasterDbContext>();
+            options.UseLazyLoadingProxies();
             options.UseSqlite($"Data Source={path}Database.db");
 
             return new Library_MasterDbContext(options.Options);
